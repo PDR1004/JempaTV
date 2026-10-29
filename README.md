@@ -1,168 +1,215 @@
-# JempaTV 📺
+JempaTV 📺
 
-JempaTV is a web application developed using Angular and the ABP Framework, designed to be a personalized streaming platform. It allows users to discover, manage, and rate series and movies, providing a rich and interactive viewing experience.
+JempaTV es una aplicación web desarrollada con Angular y el ABP Framework, diseñada para ser una plataforma de streaming personalizada. Permite a los usuarios descubrir, gestionar y calificar series y películas, ofreciendo una experiencia de visualización rica e interactiva.
 
-## 🚀 Features
+🚀 Características
 
-*   **Series Discovery:** Browse and search for series using IMDB IDs, with details fetched from external APIs.
-*   **Watchlist Management:** Add series to a personal watchlist, track viewing status, and remove them.
-*   **Personalized Recommendations:** Receive series recommendations based on user activity and ratings.
-*   **User Authentication & Authorization:** Secure user accounts with login, registration, and role-based access control (Admin). 
-*   **API Statistics Dashboard:** Monitor API usage, errors, and response times.
-*   **User Profile Management:** Update user profile information, including profile pictures and email preferences.
-*   **Notifications:** Receive in-app notifications for relevant events.
-*   **Multi-language Support:** The application supports multiple languages, including English and Spanish.
-*   **Admin Panel:** Access to administrative functionalities for managing the application.
+Descubrimiento de Series: Explora y busca series utilizando IDs de IMDB, con detalles obtenidos de APIs externas.
 
-## 🛠️ Tech Stack
+Gestión de la Lista de Seguimiento (Watchlist): Añade series a una lista de seguimiento personal, haz un seguimiento del estado de visualización y elimínalas.
 
-*   **Frontend:** Angular, TypeScript, HTML, CSS, SCSS
-*   **Backend:** .NET (ABP Framework)
-*   **Databases:** Entity Framework Core (implied by migrations)
-*   **Styling:** Bootstrap, Custom SCSS
-*   **Libraries:** Swiper.js (carousels), Chart.js (data visualization), Ngx-Datatable
-*   **Containerization:** Docker
+Recomendaciones Personalizadas: Recibe recomendaciones de series basadas en la actividad del usuario y sus calificaciones.
 
-## 📦 Installation
+Autenticación y Autorización de Usuarios: Cuentas de usuario seguras con inicio de sesión, registro y control de acceso basado en roles (Administrador).
 
-### Prerequisites
+Panel de Estadísticas de la API: Monitorea el uso de la API, los errores y los tiempos de respuesta.
 
-*   [.NET 8.0+ SDK](https://dotnet.microsoft.com/download/dotnet)
-*   [Node.js v18 or v20](https://nodejs.org/en)
-*   [Yarn](https://yarnpkg.com/)
-*   [Docker](https://www.docker.com/get-started)
+Gestión del Perfil de Usuario: Actualiza la información del perfil de usuario, incluyendo fotos de perfil y preferencias de correo electrónico.
 
-### Backend Setup
+Notificaciones: Recibe notificaciones dentro de la aplicación sobre eventos relevantes.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/PDR1004/JempaTV.git
-    cd JempaTV
-    ```
+Soporte Multilingüe: La aplicación soporta múltiples idiomas, incluyendo inglés y español.
 
-2.  **Install client-side dependencies (if you cloned the repo):**
-    ```bash
-    cd angular
-    yarn install
-    ```
+Panel de Administración: Acceso a funcionalidades administrativas para gestionar la aplicación.
 
-3.  **Run the database migrator:**
-    ```bash
-    cd ../src/JempaTV.DbMigrator
-    dotnet run
-    ```
-    This will create the initial database and seed initial data.
+🛠️ Tecnologías
 
-4.  **Generate a signing certificate (for production):**
-    ```bash
-    dotnet dev-certs https -v -ep openiddict.pfx -p 86402479-7d42-49ac-a3f0-e8dc50579021
-    ```
-    Replace the password (`86402479-7d42-49ac-a3f0-e8dc50579021`) as needed.
+Frontend: Angular, TypeScript, HTML, CSS, SCSS
 
-5.  **Configure connection strings:**
-    Update `appsettings.json` and `appsettings.Development.json` in `src/JempaTV.HttpApi.Host` with your database connection details.
+Backend: .NET (ABP Framework)
 
-### Frontend Setup
+Bases de Datos: Entity Framework Core (implícito por las migraciones)
 
-1.  **Navigate to the Angular project:**
-    ```bash
-    cd angular
-    ```
+Estilos: Bootstrap, SCSS Personalizado
 
-2.  **Install dependencies:**
-    ```bash
-    yarn install
-    ```
+Librerías: Swiper.js (carruseles), Chart.js (visualización de datos), Ngx-Datatable
 
-3.  **Run the development server:**
-    ```bash
-    ng serve
-    ```
-    The application will be accessible at `http://localhost:4200/`.
+Contenerización: Docker
 
-### Docker Setup
+📦 Instalación
 
-*   The project includes `Dockerfile` configurations for both the Angular frontend and the .NET backend services.
-*   Refer to the respective `Dockerfile`s for build and run instructions.
+Prerrequisitos
 
-## ▶️ Usage
+.NET 8.0+ SDK
 
-### Development
+Node.js v18 o v20
 
-*   **Start the Angular development server:**
-    ```bash
-    cd angular
-    ng serve
-    ```
-    Navigate to `http://localhost:4200/`.
+Yarn
 
-*   **Run the backend services:**
-    Refer to the `src/JempaTV.HttpApi.Host/Dockerfile` and `src/JempaTV.DbMigrator/Dockerfile` for instructions.
+Docker
 
-### Key Functionalities
+Configuración del Backend
 
-*   **Home Page:**
-    *   For logged-out users, displays introductory content and a login prompt.
-    *   For logged-in users, showcases featured series with a carousel and a top 10 series carousel.
-*   **Series:** Search for series by title, view details, and add them to your watchlist.
-*   **Watchlist:** View your saved series, rate them, add comments, and remove them.
-*   **API Management:** An admin-only section to view API statistics, errors, and user activity.
-*   **Notifications:** Access your personal notifications.
-*   **Settings:** Manage your profile picture, email preferences, and application language.
+Clonar el repositorio:
 
-## 📚 Table of Contents
+git clone https://github.com/PDR1004/JempaTV.git
+cd JempaTV
 
-*   [Features](#-features)
-*   [Tech Stack](#️-tech-stack)
-*   [Installation](#-installation)
-*   [Usage](#-usage)
-*   [Project Structure](#-project-structure)
-*   [Contributing](#-contributing)
-*   [License](#-license)
-*   [Important Links](#-important-links)
-*   [Footer](#-footer)
 
-## 🏗️ Project Structure
+Instalar dependencias del lado del cliente (si clonaste el repositorio):
 
-The project follows a layered architecture typical of ABP Framework applications:
+cd angular
+yarn install
 
-*   `angular/`: Frontend application built with Angular.
-*   `src/JempaTV.Application/`
-*   `src/JempaTV.Application.Contracts/`
-*   `src/JempaTV.Domain/`
-*   `src/JempaTV.Domain.Shared/`
-*   `src/JempaTV.EntityFrameworkCore/`
-*   `src/JempaTV.HttpApi/`
-*   `src/JempaTV.HttpApi.Host/`
-*   `src/JempaTV.DbMigrator/`
-*   `test/`: Unit and integration tests.
 
-## 🤝 Contributing
+Ejecutar el migrador de la base de datos:
 
-Contributions are welcome! Please follow these guidelines:
+cd ../src/JempaTV.DbMigrator
+dotnet run
 
-1.  **Fork the repository.**
-2.  **Create a new branch** for your feature or bug fix.
-3.  **Make your changes** and ensure they are well-tested.
-4.  **Submit a Pull Request** with a clear description of your changes.
 
-## 📜 License
+Esto creará la base de datos inicial y poblará los datos iniciales.
 
-This project is not licensed. (Based on repository information)
+Generar un certificado de firma (para producción):
 
-## 🔗 Important Links
+dotnet dev-certs https -v -ep openiddict.pfx -p 86402479-7d42-49ac-a3f0-e8dc50579021
 
-*   **Repository:** [https://github.com/PDR1004/JempaTV](https://github.com/PDR1004/JempaTV)
-*   **ABP Framework:** [https://abp.io/](https://abp.io/)
 
-## 📝 Footer
+Reemplaza la contraseña (86402479-7d42-49ac-a3f0-e8dc50579021) según sea necesario.
+
+Configurar las cadenas de conexión:
+Actualiza appsettings.json y appsettings.Development.json en src/JempaTV.HttpApi.Host con los detalles de conexión de tu base de datos.
+
+Configuración del Frontend
+
+Navegar al proyecto Angular:
+
+cd angular
+
+
+Instalar dependencias:
+
+yarn install
+
+
+Ejecutar el servidor de desarrollo:
+
+ng serve
+
+
+La aplicación estará accesible en http://localhost:4200/.
+
+Configuración de Docker
+
+El proyecto incluye configuraciones Dockerfile tanto para el frontend en Angular como para los servicios backend en .NET.
+
+Consulta los Dockerfile respectivos para las instrucciones de compilación y ejecución.
+
+▶️ Uso
+
+Desarrollo
+
+Iniciar el servidor de desarrollo de Angular:
+
+cd angular
+ng serve
+
+
+Navega a http://localhost:4200/.
+
+Ejecutar los servicios backend:
+Consulta src/JempaTV.HttpApi.Host/Dockerfile y src/JempaTV.DbMigrator/Dockerfile para ver las instrucciones.
+
+Funcionalidades Principales
+
+Página de Inicio:
+
+Para los usuarios no autenticados, muestra contenido introductorio y una solicitud de inicio de sesión.
+
+Para los usuarios autenticados, muestra las series destacadas con un carrusel y un carrusel con las 10 mejores series.
+
+Series: Busca series por título, mira los detalles y añádelas a tu lista de seguimiento.
+
+Lista de seguimiento (Watchlist): Ve tus series guardadas, califícalas, añade comentarios y elimínalas.
+
+Gestión de API: Una sección exclusiva para administradores para ver las estadísticas de la API, errores y la actividad de los usuarios.
+
+Notificaciones: Accede a tus notificaciones personales.
+
+Configuración: Gestiona tu foto de perfil, preferencias de correo electrónico y el idioma de la aplicación.
+
+📚 Tabla de Contenidos
+
+Características
+
+Tecnologías
+
+Instalación
+
+Uso
+
+Estructura del Proyecto
+
+Contribución
+
+Licencia
+
+Enlaces Importantes
+
+Pie de página
+
+🏗️ Estructura del Proyecto
+
+El proyecto sigue una arquitectura en capas típica de las aplicaciones del ABP Framework:
+
+angular/: Aplicación frontend construida con Angular.
+
+src/JempaTV.Application/
+
+src/JempaTV.Application.Contracts/
+
+src/JempaTV.Domain/
+
+src/JempaTV.Domain.Shared/
+
+src/JempaTV.EntityFrameworkCore/
+
+src/JempaTV.HttpApi/
+
+src/JempaTV.HttpApi.Host/
+
+src/JempaTV.DbMigrator/
+
+test/: Pruebas unitarias y de integración.
+
+🤝 Contribución
+
+¡Las contribuciones son bienvenidas! Por favor, sigue estas pautas:
+
+Haz un Fork del repositorio.
+
+Crea una nueva rama para tu característica o corrección de errores.
+
+Realiza tus cambios y asegúrate de que estén bien probados.
+
+Envía un Pull Request con una descripción clara de tus cambios.
+
+📜 Licencia
+
+Este proyecto no tiene licencia especificada. (Basado en la información del repositorio)
+
+🔗 Enlaces Importantes
+
+Repositorio: https://github.com/PDR1004/JempaTV
+
+ABP Framework: https://abp.io/
+
+📝 Pie de página
 
 © 2025 JempaTV
 
-This project is maintained by [PDR1004](https://github.com/PDR1004).
+Este proyecto es mantenido por PDR1004.
 
-[Fork on GitHub](https://github.com/PDR1004/JempaTV/fork)
+Haz un Fork en GitHub
 
-
----
-**<p align="center">Generated by [ReadmeCodeGen](https://www.readmecodegen.com/)</p>**
+Generado por ReadmeCodeGen
