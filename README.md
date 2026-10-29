@@ -1,55 +1,168 @@
-﻿# JempaTV
+# JempaTV 📺
 
-## About this solution
+JempaTV is a web application developed using Angular and the ABP Framework, designed to be a personalized streaming platform. It allows users to discover, manage, and rate series and movies, providing a rich and interactive viewing experience.
 
-This is a layered startup solution based on [Domain Driven Design (DDD)](https://docs.abp.io/en/abp/latest/Domain-Driven-Design) practises. All the fundamental ABP modules are already installed. Check the [Application Startup Template](https://abp.io/docs/latest/startup-templates/application/index) documentation for more info.
+## 🚀 Features
 
-### Pre-requirements
+*   **Series Discovery:** Browse and search for series using IMDB IDs, with details fetched from external APIs.
+*   **Watchlist Management:** Add series to a personal watchlist, track viewing status, and remove them.
+*   **Personalized Recommendations:** Receive series recommendations based on user activity and ratings.
+*   **User Authentication & Authorization:** Secure user accounts with login, registration, and role-based access control (Admin). 
+*   **API Statistics Dashboard:** Monitor API usage, errors, and response times.
+*   **User Profile Management:** Update user profile information, including profile pictures and email preferences.
+*   **Notifications:** Receive in-app notifications for relevant events.
+*   **Multi-language Support:** The application supports multiple languages, including English and Spanish.
+*   **Admin Panel:** Access to administrative functionalities for managing the application.
 
-* [.NET8.0+ SDK](https://dotnet.microsoft.com/download/dotnet)
-* [Node v18 or 20](https://nodejs.org/en)
+## 🛠️ Tech Stack
 
-### Configurations
+*   **Frontend:** Angular, TypeScript, HTML, CSS, SCSS
+*   **Backend:** .NET (ABP Framework)
+*   **Databases:** Entity Framework Core (implied by migrations)
+*   **Styling:** Bootstrap, Custom SCSS
+*   **Libraries:** Swiper.js (carousels), Chart.js (data visualization), Ngx-Datatable
+*   **Containerization:** Docker
 
-The solution comes with a default configuration that works out of the box. However, you may consider to change the following configuration before running your solution:
+## 📦 Installation
 
-**
-### Before running the application
+### Prerequisites
 
-* Run `abp install-libs` command on your solution folder to install client-side package dependencies. This step is automatically done when you create a new solution, if you didn't especially disabled it. However, you should run it yourself if you have first cloned this solution from your source control, or added a new client-side package dependency to your solution.
-* Run `JempaTV.DbMigrator` to create the initial database. This step is also automatically done when you create a new solution, if you didn't especially disabled it. This should be done in the first run. It is also needed if a new database migration is added to the solution later.
+*   [.NET 8.0+ SDK](https://dotnet.microsoft.com/download/dotnet)
+*   [Node.js v18 or v20](https://nodejs.org/en)
+*   [Yarn](https://yarnpkg.com/)
+*   [Docker](https://www.docker.com/get-started)
 
-#### Generating a Signing Certificate
+### Backend Setup
 
-In the production environment, you need to use a production signing certificate. ABP Framework sets up signing and encryption certificates in your application and expects an `openiddict.pfx` file in your application.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/PDR1004/JempaTV.git
+    cd JempaTV
+    ```
 
-To generate a signing certificate, you can use the following command:
+2.  **Install client-side dependencies (if you cloned the repo):**
+    ```bash
+    cd angular
+    yarn install
+    ```
 
-```bash
-dotnet dev-certs https -v -ep openiddict.pfx -p 86402479-7d42-49ac-a3f0-e8dc50579021
-```
+3.  **Run the database migrator:**
+    ```bash
+    cd ../src/JempaTV.DbMigrator
+    dotnet run
+    ```
+    This will create the initial database and seed initial data.
 
-> `86402479-7d42-49ac-a3f0-e8dc50579021` is the password of the certificate, you can change it to any password you want.
+4.  **Generate a signing certificate (for production):**
+    ```bash
+    dotnet dev-certs https -v -ep openiddict.pfx -p 86402479-7d42-49ac-a3f0-e8dc50579021
+    ```
+    Replace the password (`86402479-7d42-49ac-a3f0-e8dc50579021`) as needed.
 
-It is recommended to use **two** RSA certificates, distinct from the certificate(s) used for HTTPS: one for encryption, one for signing.
+5.  **Configure connection strings:**
+    Update `appsettings.json` and `appsettings.Development.json` in `src/JempaTV.HttpApi.Host` with your database connection details.
 
-For more information, please refer to: https://documentation.openiddict.com/configuration/encryption-and-signing-credentials.html#registering-a-certificate-recommended-for-production-ready-scenarios
+### Frontend Setup
 
-> Also, see the [Configuring OpenIddict](https://docs.abp.io/en/abp/latest/Deployment/Configuring-OpenIddict#production-environment) documentation for more information.
+1.  **Navigate to the Angular project:**
+    ```bash
+    cd angular
+    ```
 
-### Solution structure
+2.  **Install dependencies:**
+    ```bash
+    yarn install
+    ```
 
-This is a layered monolith application that consists of the following applications:
+3.  **Run the development server:**
+    ```bash
+    ng serve
+    ```
+    The application will be accessible at `http://localhost:4200/`.
 
-* `JempaTV.DbMigrator`: A console application which applies the migrations and also seeds the initial data. It is useful on development as well as on production environment.
-*
-## Deploying the application
+### Docker Setup
 
-Deploying an ABP application is not different than deploying any .NET or ASP.NET Core application. However, there are some topics that you should care about when you are deploying your applications. You can check ABP's [Deployment documentation](https://docs.abp.io/en/abp/latest/Deployment/Index) and ABP Commercial's [Deployment documentation](https://abp.io/docs/latest/startup-templates/application/deployment?UI=MVC&DB=EF&Tiered=No) before deploying your application.
+*   The project includes `Dockerfile` configurations for both the Angular frontend and the .NET backend services.
+*   Refer to the respective `Dockerfile`s for build and run instructions.
 
-### Additional resources
+## ▶️ Usage
 
-You can see the following resources to learn more about your solution and the ABP Framework:
+### Development
 
-* [Web Application Development Tutorial](https://abp.io/docs/latest/tutorials/book-store/part-1)
-* [Application Startup Template](https://abp.io/docs/latest/startup-templates/application/index)
+*   **Start the Angular development server:**
+    ```bash
+    cd angular
+    ng serve
+    ```
+    Navigate to `http://localhost:4200/`.
+
+*   **Run the backend services:**
+    Refer to the `src/JempaTV.HttpApi.Host/Dockerfile` and `src/JempaTV.DbMigrator/Dockerfile` for instructions.
+
+### Key Functionalities
+
+*   **Home Page:**
+    *   For logged-out users, displays introductory content and a login prompt.
+    *   For logged-in users, showcases featured series with a carousel and a top 10 series carousel.
+*   **Series:** Search for series by title, view details, and add them to your watchlist.
+*   **Watchlist:** View your saved series, rate them, add comments, and remove them.
+*   **API Management:** An admin-only section to view API statistics, errors, and user activity.
+*   **Notifications:** Access your personal notifications.
+*   **Settings:** Manage your profile picture, email preferences, and application language.
+
+## 📚 Table of Contents
+
+*   [Features](#-features)
+*   [Tech Stack](#️-tech-stack)
+*   [Installation](#-installation)
+*   [Usage](#-usage)
+*   [Project Structure](#-project-structure)
+*   [Contributing](#-contributing)
+*   [License](#-license)
+*   [Important Links](#-important-links)
+*   [Footer](#-footer)
+
+## 🏗️ Project Structure
+
+The project follows a layered architecture typical of ABP Framework applications:
+
+*   `angular/`: Frontend application built with Angular.
+*   `src/JempaTV.Application/`
+*   `src/JempaTV.Application.Contracts/`
+*   `src/JempaTV.Domain/`
+*   `src/JempaTV.Domain.Shared/`
+*   `src/JempaTV.EntityFrameworkCore/`
+*   `src/JempaTV.HttpApi/`
+*   `src/JempaTV.HttpApi.Host/`
+*   `src/JempaTV.DbMigrator/`
+*   `test/`: Unit and integration tests.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1.  **Fork the repository.**
+2.  **Create a new branch** for your feature or bug fix.
+3.  **Make your changes** and ensure they are well-tested.
+4.  **Submit a Pull Request** with a clear description of your changes.
+
+## 📜 License
+
+This project is not licensed. (Based on repository information)
+
+## 🔗 Important Links
+
+*   **Repository:** [https://github.com/PDR1004/JempaTV](https://github.com/PDR1004/JempaTV)
+*   **ABP Framework:** [https://abp.io/](https://abp.io/)
+
+## 📝 Footer
+
+© 2025 JempaTV
+
+This project is maintained by [PDR1004](https://github.com/PDR1004).
+
+[Fork on GitHub](https://github.com/PDR1004/JempaTV/fork)
+
+
+---
+**<p align="center">Generated by [ReadmeCodeGen](https://www.readmecodegen.com/)</p>**
